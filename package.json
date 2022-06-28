@@ -9,9 +9,26 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/react": "^11.9.0",
+    "@emotion/styled": "^11.8.1",
+    "@mui/icons-material": "^5.8.0",
+    "@reduxjs/toolkit": "^1.8.2",
+    "apexcharts": "^3.35.3",
+    "axios": "^0.27.2",
+    "bcryptjs": "^2.4.3",
+    "js-cookie": "^3.0.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.3.4",
     "next": "12.1.6",
-    "react": "18.1.0",
-    "react-dom": "18.1.0"
+    "next-connect": "^0.12.2",
+    "nextjs-progressbar": "^0.0.14",
+    "notistack": "^2.0.5",
+    "react": "^17.0.2",
+    "react-apexcharts": "^1.4.0",
+    "react-chartjs-2": "^4.1.0",
+    "react-dom": "^17.0.2",
+    "react-redux": "^8.0.2",
+    "recharts": "^2.0.9"
   },
   "devDependencies": {
     "eslint": "8.16.0",
