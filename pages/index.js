@@ -11,7 +11,6 @@ const Home = ({ data }) => {
   console.log(data);
   const router = useRouter();
 
-
   const totalVotes = (question) => {
     let totalVotes = [];
     question.answers.forEach((answer) => {
@@ -26,7 +25,7 @@ const Home = ({ data }) => {
   };
   return (
     <>
-       <Head>
+      <Head>
         <title>Poll</title>
       </Head>
       <div className={styles.home_container}>
@@ -52,7 +51,6 @@ const Home = ({ data }) => {
                               answer.votes,
                               totalVotes(poll)
                             )}%`,
-                         
                           }}
                         >
                           {/* {answer && totalVotes(poll).length}
@@ -81,7 +79,7 @@ const Home = ({ data }) => {
 export default Home;
 
 export async function getServerSideProps(context) {
-  const { data } = await axios.get(" http://localhost:3000/api/poll/");
+  const { data } = await axios.get(`${process.env.BASE_URL}/api/poll/`);
 
   if (!data) {
     return {
