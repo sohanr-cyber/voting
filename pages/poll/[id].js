@@ -96,7 +96,7 @@ const Details = ({ id }) => {
       if (newAns == "") {
         enqueueSnackbar("Option Cannot be Empty", { variant: "warning" });
         return;
-      }
+      } 
       setLoading(true);
       const { data } = await axios.post(
         `/api/poll/${id}`,
@@ -109,6 +109,8 @@ const Details = ({ id }) => {
           },
         }
       );
+
+      console.log({ data });
 
       enqueueSnackbar("A New Option Added", { variant: "success" });
 
@@ -202,7 +204,6 @@ const Details = ({ id }) => {
       setFetchAgain((prev) => !prev);
     } catch (error) {
       setLoading(false);
-
       console.log(error);
     }
   };
