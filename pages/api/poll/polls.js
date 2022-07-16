@@ -1,28 +1,21 @@
 import nc from "next-connect";
 import bcrypt from "bcryptjs";
-import User from "../../../models/User";
-
+import Poll from "../../../models/Polls";
 import db from "../../../utils/db";
-// import { signToken, isAdmin, isAuth } from "../../../utils/auth";
+import { signToken, isAuth } from "../../../utils/auth";
 
 const handler = nc();
 
-// handler.use(isAuth, isAdmin);
-
+handler.use();
 
 handler.get(async (req, res) => {
   try {
     await db.connect();
-    const users = await User.find({});
+    const polls = await Poll.find({});
     await db.disconnect();
-    return res.send(users);
+    res.status(200).send(polls);
   } catch (error) {
     console.log(error);
-    return res.send(error);
+    res.status(404).send(error);
   }
 });
-
-
-
-
-export default handler;

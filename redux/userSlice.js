@@ -1,7 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import Cookies from "js-cookie";
 
-
 export const userSlice = createSlice({
   name: "user",
   initialState: {
@@ -17,6 +16,9 @@ export const userSlice = createSlice({
     logout: (state) => {
       Cookies.remove("userInfo");
       state.userInfo = null;
+    },
+    incrementByAmount: (state, action) => {
+      state.value += action.payload;
     },
   },
 });

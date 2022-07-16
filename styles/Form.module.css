@@ -1,0 +1,38 @@
+.form_container {
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  height: 90vh;
+}
+
+.form_container form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.form_container form input {
+  padding: 5px 7px;
+  border: none;
+  border-bottom: 2px solid lightblue;
+}
+
+.btn {
+  text-align: center;
+  padding: 5px 7px;
+  border: 1px solid lightblue;
+  font-weight: 300;
+  cursor: pointer;
+  border-radius: 3px;
+  background-color: lightblue;
+}
+
+.link {
+  font-size: 95%;
+  text-decoration: none;
+}
+
+.ref {
+  text-decoration: none;
+  color: skyblue;
+}
