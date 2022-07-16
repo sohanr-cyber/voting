@@ -38,12 +38,12 @@ handler.use(isAuth);
 handler.post(async (req, res) => {
   try {
     req.body.answer == "" && res.status(400).send({ message: "Set Answer" });
-    const existAns = await Poll.findOne({ _id: req.query.id });
-    const onlyAdminCanChangeAns = existAns.onlyAdminCanChangeAns;
+    const existPoll = await Poll.findOne({ _id: req.query.id });
+    const onlyAdminCanChangeAns = existPoll.onlyAdminCanChangeAns;
     console.log({ onlyAdminCanChangeAns });
 
     if (onlyAdminCanChangeAns) {
-      if (existAns.creator != req.user._id) {
+      if (existPoll.creator != req.user._id) {
         return res.status(200).send({
           message:
             "Your are not allowed to add extra vote, only questioner can do so",
@@ -52,16 +52,24 @@ handler.post(async (req, res) => {
     }
 
     await db.connect();
-    const poll = await Poll.updateOne(
-      { _id: req.query.id },
-      {
-        $push: {
-          answers: {
-            answer: req.body.answer,
-          },
-        },
-      }
-    );
+    // const poll = await Poll.updateOne(
+    //   { _id: req.query.id },
+    //   {
+    //     $push: {
+    //       answers: {
+    //         answer: req.body.answer,
+    //       },
+    //     },
+    //   }
+    // );
+
+    existPoll.answers.push({
+      answer: req.body.answer,
+    });
+
+    
+    const poll = await existPoll.save();
+
     // const pollWithVote = poll.answers.push({ answer: req.body.answer });
     await db.disconnect();
     res.status(200).send(poll);

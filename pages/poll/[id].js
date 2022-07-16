@@ -50,7 +50,7 @@ const Details = ({ id }) => {
     "#000000",
   ];
 
-  console.log({ fetchAgain });
+
 
   const format = (data) => {
     const obj = [];
