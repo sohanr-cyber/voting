@@ -52,22 +52,11 @@ handler.post(async (req, res) => {
     }
 
     await db.connect();
-    // const poll = await Poll.updateOne(
-    //   { _id: req.query.id },
-    //   {
-    //     $push: {
-    //       answers: {
-    //         answer: req.body.answer,
-    //       },
-    //     },
-    //   }
-    // );
 
     existPoll.answers.push({
       answer: req.body.answer,
     });
 
-    
     const poll = await existPoll.save();
 
     // const pollWithVote = poll.answers.push({ answer: req.body.answer });
