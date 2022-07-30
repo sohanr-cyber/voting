@@ -37,6 +37,7 @@ handler.delete(async (req, res) => {
 handler.use(isAuth);
 handler.post(async (req, res) => {
   try {
+    await db.connect();
     req.body.answer == "" && res.status(400).send({ message: "Set Answer" });
     const existAns = await Poll.findOne({ _id: req.query.id });
     const onlyAdminCanChangeAns = existAns.onlyAdminCanChangeAns;
@@ -51,7 +52,7 @@ handler.post(async (req, res) => {
       }
     }
 
-    await db.connect();
+ 
     const poll = await Poll.updateOne(
       { _id: req.query.id },
       {

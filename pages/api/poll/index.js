@@ -23,6 +23,7 @@ handler.use(isAuth);
 handler.post(async (req, res) => {
   try {
     await db.connect();
+    
     const newPoll = await new Poll({
       creator: req.user._id,
       question: req.body.question,
@@ -30,6 +31,7 @@ handler.post(async (req, res) => {
       changeAble: req.body.changeAble,
       onlyAdminCanChangeAns: req.body.onlyAdminCanChangeAns,
     });
+
     const poll = await newPoll.save();
     await db.disconnect();
     res.status(200).send(poll);
